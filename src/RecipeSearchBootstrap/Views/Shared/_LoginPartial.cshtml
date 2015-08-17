@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+@using RecipeSearchBootstrap.Models
+@using RecipeSearchBootstrap.Context
+
+@if (Request.IsAuthenticated)
+{
+
+    var fullName = string.Empty;
+
+    var userStore = new UserStore<User>(new RecipeSearchDbContext());
+    var manager = new UserManager<User>(userStore);
+    var currentUser = manager.FindById(User.Identity.GetUserId());
+
+    fullName = currentUser.FullName;
+
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "collapse navbar-collapse navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@fullName <i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Gerencie sua conta", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                    <li>@Html.ActionLink("Enviar receita", "Create", "Recipes")</li>
+                    <li><a href="#">Meu livro de receitas</a></li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Gerenciar receitas", "Index", "ManageRecipes")</li>
+                    }
+                    <li class="divider"></li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Sair</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    }
+}
+else
+{
+    <ul class="login-links">
+        <li>@Html.ActionLink("Registrar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

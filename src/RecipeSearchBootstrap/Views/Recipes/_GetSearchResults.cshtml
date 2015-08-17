@@ -1,0 +1,32 @@
+﻿@using RecipeSearchBootstrap.Utilities
+@model IEnumerable<RecipeSearchBootstrap.Models.Recipes>
+
+@{List<string> searchParameters = ViewBag.SearchParameters; }
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-11">
+            <div class="single-profile-top wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <div class="media">
+                    <div class="pull-left">
+                        @Html.ActionImage("Details", "Recipes", "http://placehold.it/180x180", item.Name, null, "media-object mediaResults", new { id = item.RecipesID })
+                    </div>
+                    <div class="media-body">
+                        <h4>@Html.ActionLink(item.Name, "Details", new { id = item.RecipesID })</h4>
+                        <h5>Enviada por @item.User.FullName</h5>
+                        <ul class="tag clearfix">
+                            <li><i class="fa fa-clock-o"></i> Tempo de preparo: @item.Time minutos</li>
+                            <li><i class="fa fa-cutlery"></i> Rendimento: @item.Portions porções</li>
+                        </ul>
+                        <ul class="tag clearfix lstIng">
+                            @foreach (var ing in item.IngredientsList)
+                            {
+                                <li class="ing @(searchParameters.Contains(ing.Name) ? "match" : "no-match")">@ing.Name</li>
+                            }
+                        </ul>
+                    </div>
+                </div><!--/.media -->
+            </div>
+        </div><!--/.col-lg-4 -->
+    </div>
+}

@@ -1,0 +1,122 @@
+﻿@model IEnumerable<RecipeSearchBootstrap.Models.Recipes>
+
+<section id="main-slider" class="no-margin">
+    <div class="carousel slide">
+        <ol class="carousel-indicators">
+            <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+            <li data-target="#main-slider" data-slide-to="1"></li>
+            <li data-target="#main-slider" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active" style="background-image: url(images/ingredients.jpg)">
+                <div class="container">
+                    <div class="row slide-margin">
+                        <div class="col-sm-6">
+                            <div class="carousel-content">
+                                <h1 class="animation animated-item-1">Lorem ipsum dolor sit amet consectetur adipisicing elit</h1>
+                                <h2 class="animation animated-item-2">Accusantium doloremque laudantium totam rem aperiam, eaque ipsa...</h2>
+                                @Html.ActionLink("Comece agora", "Index", "Recipes", null, new { @class = "btn-slide animation animated-item-3" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.item-->
+            <div class="item" style="background-image: url(images/ingredients.jpg)">
+                <div class="container">
+                    <div class="row slide-margin">
+                        <div class="col-sm-6">
+                            <div class="carousel-content">
+                                <h1 class="animation animated-item-1">Lorem ipsum dolor sit amet consectetur adipisicing elit</h1>
+                                <h2 class="animation animated-item-2">Accusantium doloremque laudantium totam rem aperiam, eaque ipsa...</h2>
+                                <a class="btn-slide animation animated-item-3" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.item-->
+            <div class="item" style="background-image: url(images/ingredients.jpg)">
+                <div class="container">
+                    <div class="row slide-margin">
+                        <div class="col-sm-6">
+                            <div class="carousel-content">
+                                <h1 class="animation animated-item-1">Lorem ipsum dolor sit amet consectetur adipisicing elit</h1>
+                                <h2 class="animation animated-item-2">Accusantium doloremque laudantium totam rem aperiam, eaque ipsa...</h2>
+                                <a class="btn-slide animation animated-item-3" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.item-->
+        </div><!--/.carousel-inner-->
+    </div><!--/.carousel-->
+    <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+        <i class="fa fa-chevron-left"></i>
+    </a>
+    <a class="next hidden-xs" href="#main-slider" data-slide="next">
+        <i class="fa fa-chevron-right"></i>
+    </a>
+</section><!--/#main-slider-->
+@if (!Request.IsAuthenticated)
+{
+    <section id="feature" class="transparent-bg">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>Como funciona</h2>
+            </div>
+            <div class="row">
+                <div class="features">
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-list"></i>
+                            <h2>Liste</h2>
+                            <h3>Entre com uma lista de ingredientes que você tem disponível</h3>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-search"></i>
+                            <h2>Encontre</h2>
+                            <h3>Selecione a receita que mais lhe agrada</h3>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-cutlery"></i>
+                            <h2>Cozinhe</h2>
+                            <h3>Delicie-se com o seu prato </h3>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    
+                </div><!--/.services-->
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#feature-->
+}
+<section id="recent-works">
+    <div class="container">
+        <div class="center wow fadeInDown">
+            <h2>Destaques</h2>
+        </div>
+        <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <div class="recent-work-wrap">
+                    <img class="img-responsive" src="http://placehold.it/290x220" alt="">
+                    <div class="overlay">
+                        <div class="recent-work-inner">
+                            <h3>@Html.ActionLink(item.Name, "Details", "Recipes", new { id = item.RecipesID }, null)</h3>
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                            <a class="preview" href="images/portfolio/full/item1.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+            
+            
+        </div><!--/.row-->
+    </div><!--/.container-->
+</section><!--/#recent-works-->
+

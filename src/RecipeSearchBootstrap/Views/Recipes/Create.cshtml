@@ -1,0 +1,107 @@
+﻿@model RecipeSearchBootstrap.Models.Recipes
+
+@{
+    ViewBag.Title = "RecipeSearch - Enviar Receita";
+}
+<section class="pricing-area text-center">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="container  wow fadeInDown">
+        <div class="center">
+            <h2>Enviar receita</h2>
+            <p class="lead">Bacon ipsum dolor amet flank ground round tenderloin picanha turkey pork belly ham bacon leberkas pancetta kevin tri-tip sausage beef ribs. Beef ribs brisket tenderloin ball tip landjaeger tail jerky hamburger alcatra prosciutto porchetta short ribs bresaola picanha. Meatball chicken pork belly frankfurter. Bacon filet mignon chicken alcatra cupim sirloin. Drumstick leberkas pork loin andouille kielbasa jowl venison. Porchetta spare ribs bresaola venison kevin fatback prosciutto hamburger leberkas cow biltong pork loin short loin pork. </p>
+        </div>
+        <div class="plan price-one">
+            <ul>
+                <li class="heading-one">
+                    <span>Informações básicas</span>
+                </li>
+                <li>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Nome:</label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Imagem:</label>
+                            <div class="col-md-9">
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-2"><i class="fa fa-clock-o"></i> Tempo:</label>
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="control-label col-md-1">minutos</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-2"><i class="fa fa-cutlery"></i> Rendimento:</label>
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.Portions, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                                @Html.ValidationMessageFor(model => model.Portions, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="control-label col-md-1">porções</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="plan price-twp">
+            <ul>
+                <li class="heading-two">
+                    <span>Ingredientes</span>
+                </li>
+                <li>Bacon ipsum dolor amet flank ground round tenderloin picanha turkey pork belly ham bacon leberkas pancetta kevin tri-tip sausage beef ribs. Beef ribs brisket tenderloin ball tip landjaeger tail jerky hamburger alcatra prosciutto porchetta short ribs bresaola picanha. Meatball chicken pork belly frankfurter. Bacon filet mignon chicken alcatra cupim sirloin. Drumstick leberkas pork loin andouille kielbasa jowl venison. Porchetta spare ribs bresaola venison kevin fatback prosciutto hamburger leberkas cow biltong pork loin short loin pork. </li>
+                <li>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            @Html.TextAreaFor(model => model.Ingredients, new { @class = "form-control vresize", rows = 5 })
+                            @Html.ValidationMessageFor(model => model.Ingredients, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="plan price-three">
+            <ul>
+                <li class="heading-three">
+                    <span>Instruções</span>
+                </li>
+                <li>Bacon ipsum dolor amet flank ground round tenderloin picanha turkey pork belly ham bacon leberkas pancetta kevin tri-tip sausage beef ribs. Beef ribs brisket tenderloin ball tip landjaeger tail jerky hamburger alcatra prosciutto porchetta short ribs bresaola picanha. Meatball chicken pork belly frankfurter. Bacon filet mignon chicken alcatra cupim sirloin. Drumstick leberkas pork loin andouille kielbasa jowl venison. Porchetta spare ribs bresaola venison kevin fatback prosciutto hamburger leberkas cow biltong pork loin short loin pork. </li>
+                <li>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            @Html.TextAreaFor(model => model.Instructions, new { @class = "form-control vresize", rows = 5 })
+                            @Html.ValidationMessageFor(model => model.Instructions, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </li>
+                <li class="plan-action">
+                    <button value="Create" class="btn btn-primary">Enviar</button>
+                </li>
+            </ul>
+        </div>
+
+
+    </div><!--/.container-->
+    }
+</section><!--/#contact-page-->/#contact-page-->
